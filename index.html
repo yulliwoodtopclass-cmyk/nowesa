@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노스웨스트 사람들 (NOWESA) | 축구 유튜브 & 팬 커뮤니티</title>
+  <style>
+    :root {
+      --bg-main: #080c14;
+      --bg-card: #0f172a;
+      --bg-card-hover: #16223b;
+      --bg-input: #151f33;
+      --border-color: #1e2c47;
+      --border-highlight: #2c426b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      /* Everton Royal Blue Accent Palette */
+      --everton-blue: #003399;
+      --everton-royal: #0047bb;
+      --everton-light: #38bdf8;
+      --everton-glow: rgba(0, 71, 187, 0.35);
+      --accent-green: #38bdf8; /* Swapped primary highlight to Everton Cyan/Blue */
+      --accent-green-glow: rgba(0, 71, 187, 0.3);
+      --accent-red: #ff3366;
+      --accent-red-glow: rgba(255, 51, 102, 0.25);
+      --accent-blue: #003399;
+      --accent-gold: #f59e0b;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 71, 187, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 51, 153, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.04) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-highlight);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 13, 20, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg, #003399, #0052cc);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      box-shadow: 0 2px 10px rgba(0, 51, 153, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-green);
+    }
+
+    /* Club Selector in Header */
+    .header-club-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 7px 14px;
+      border-radius: 20px;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .header-club-btn:hover {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 12px var(--accent-green-glow);
+    }
+    .club-pill-icon {
+      font-size: 1.1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 71, 187, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 71, 187, 0.5); }
+      50% { box-shadow: 0 0 0 8px rgba(0, 71, 187, 0); }
+    }
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title span.highlight {
+      background: linear-gradient(90deg, #38bdf8, #0052cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      word-break: keep-all;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0047bb, #003399);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 71, 187, 0.4);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0055dd, #003dbb);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 71, 187, 0.6);
+    }
+    .btn-secondary {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+    .btn-youtube {
+      background: #ff0000;
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(255, 0, 0, 0.3);
+    }
+    .btn-youtube:hover {
+      background: #e60000;
+      transform: translateY(-2px);
+    }
+
+    /* Channel Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 900px;
+      margin: 0 auto 80px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .stat-val.accent {
+      color: var(--accent-green);
+    }
+    .stat-lbl {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* Section Headers */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-sub {
+      color: var(--accent-green);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 10px auto 0;
+      word-break: keep-all;
+    }
+
+    /* Series Cards */
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+    .series-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .series-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+    .series-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--bg-input);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+    .series-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .series-text {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+    .series-badge {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--accent-green);
+    }
+
+    /* Featured Videos Showcase */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .video-card:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-4px);
+    }
+    .video-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .video-card:hover .video-thumb-overlay {
+      background: rgba(0,0,0,0.1);
+    }
+    .play-btn-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(255,0,0,0.4);
+      transition: transform 0.2s;
+    }
+    .video-card:hover .play-btn-circle {
+      transform: scale(1.1);
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.8);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .video-meta {
+      padding: 18px;
+    }
+    .video-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .video-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .video-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Community Section */
+    .community-section {
+      background: linear-gradient(180deg, rgba(17, 22, 34, 0.6) 0%, rgba(10, 13, 20, 0.9) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 100px;
+      position: relative;
+    }
+    .comm-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 24px;
+    }
+    .comm-title-area h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .comm-title-area p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+    .user-allegiance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-highlight);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+    .change-club-link {
+      color: var(--accent-green);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 0.85rem;
+    }
+
+    /* Filter & Control bar */
+    .comm-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .club-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-highlight);
+    }
+    .filter-btn.active {
+      background: #003399;
+      color: #ffffff;
+      border-color: #38bdf8;
+      font-weight: 800;
+      box-shadow: 0 0 12px rgba(0, 71, 187, 0.5);
+    }
+    .comm-sort-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sort-select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    /* Post Feed */
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .post-card:hover {
+      border-color: var(--border-highlight);
+      background: var(--bg-card-hover);
+    }
+    .post-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .post-author-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .club-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .tag-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.06);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .post-author-name {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .post-time {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    .post-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .post-snippet {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .post-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 12px;
+    }
+    .vote-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .vote-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .vote-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-main);
+    }
+    .vote-btn.active-like {
+      background: rgba(0, 71, 187, 0.25);
+      border-color: #0047bb;
+      color: #38bdf8;
+    }
+    .vote-btn.active-dislike {
+      background: rgba(255, 51, 102, 0.15);
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+    .comments-count-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Sponsorship & Ad Section */
+    .sponsor-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 50px 40px;
+      margin-bottom: 100px;
+    }
+    .sponsor-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+    }
+    .sponsor-info h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .sponsor-info p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      word-break: keep-all;
+    }
+    .sponsor-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sponsor-perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    .perk-check {
+      color: var(--accent-green);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .sponsor-form {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+    .form-control {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      border-color: var(--accent-green);
+    }
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      animation: modalFadeIn 0.25s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-body {
+      padding: 24px;
+    }
+
+    /* Club Selection Grid in Modal */
+    .club-select-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .club-option-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    .club-option-btn:hover {
+      border-color: var(--border-highlight);
+      background: var(--bg-card-hover);
+    }
+    .club-option-btn.selected {
+      border-color: var(--accent-green);
+      background: rgba(0, 255, 135, 0.1);
+    }
+    .club-icon-big {
+      font-size: 1.6rem;
+    }
+    .club-name-strong {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .club-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Post Detail Modal */
+    .detail-post-body {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      white-space: pre-wrap;
+    }
+    .comments-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    .comment-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+    .comment-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+    }
+    .comment-text {
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+    .add-comment-box {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1e293b;
+      border: 1px solid var(--accent-green);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 50px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .sponsor-layout {
+        grid-template-columns: 1fr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .club-select-grid {
+        grid-template-columns: 1fr;
+      }
+      .community-section {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-badge">NOWESA</span>
+        <span>노스웨스트 사람들</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">소개</a>
+        <a href="#series" class="nav-link">시리즈</a>
+        <a href="#community" class="nav-link">팬 스탠드</a>
+        <a href="#sponsor" class="nav-link">협업/광고</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="header-club-btn" id="headerClubBtn" onclick="openClubModal()">
+          <span class="club-pill-icon" id="headerClubIcon">🔵</span>
+          <span id="headerClubName">에버튼 FC</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+        </button>
+        <a href="#community" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">라운지 글쓰기</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero container" id="about">
+    <div class="hero-tag">
+      <span>⚽</span> 잉글랜드 축구 심장부의 뜨거운 열기를 전합니다
+    </div>
+    <h1 class="hero-title">
+      축구의 낭만과 치열한 설전,<br>
+      여기는 <span class="highlight">노스웨스트 사람들</span>입니다
+    </h1>
+    <p class="hero-desc">
+      맨유와 리버풀의 노스웨스트 더비부터 맨체스터 더비, 머지사이드 더비까지! 
+      국내 축구 팬들의 심장을 뛰게 하는 심층 전술 분석과 매운맛 팬 토론의 성지.
+    </p>
+    <div class="hero-actions">
+      <a href="https://youtube.com/channel/UCq9_Daq3YznD-JQUfETIa0w?si=Iff0gPz6uiPUm-cU" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">
+        <span>▶</span> 유튜브 채널 바로가기
+      </a>
+      <a href="#community" class="btn btn-primary">
+        <span>💬</span> 팬 라운지 입장
+      </a>
+      <a href="#sponsor" class="btn btn-secondary">
+        <span>💼</span> 협업 & 광고 제안
+      </a>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-val accent">184,000+</div>
+        <div class="stat-lbl">유튜브 구독자</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">4,200만+</div>
+        <div class="stat-lbl">누적 조회수</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">93.8%</div>
+        <div class="stat-lbl">시청자 충성도/완시청율</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val accent">매주 화·금 19:00</div>
+        <div class="stat-lbl">정규 업로드</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Series Section -->
+  <section class="container" id="series" style="padding-bottom: 60px;">
+    <div class="section-title-wrap">
+      <div class="section-sub">ORIGINAL SERIES</div>
+      <h2 class="section-title">‘노스웨스트 사람들’ 대표 코너</h2>
+      <p class="section-desc">단순한 하이라이트 나열을 넘어 현지의 숨결과 전술의 본질을 파헤칩니다.</p>
+    </div>
+
+    <div class="series-grid">
+      <div class="series-card">
+        <div class="series-icon">🔥</div>
+        <h3 class="series-title">노스웨스트 설전 (Banter)</h3>
+        <p class="series-text">붉은 악마 vs 콥들의 자비 없는 매치데이 끝장 토론. 논리와 위트가 난무하는 라이벌 팬들의 리얼 사이다 배틀!</p>
+        <span class="series-badge">매주 화요일 업로드</span>
+      </div>
+      <div class="series-card">
+        <div class="series-icon">🔍</div>
+        <h3 class="series-title">피치 위 현미경 (Tactics)</h3>
+        <p class="series-text">단 5분의 전환 플레이로 승부가 갈리는 이유. 게겐프레싱, 하프스페이스 공략 등 프로 수준의 전술 해부도.</p>
+        <span class="series-badge">경기 직후 심층분석</span>
+      </div>
+      <div class="series-card">
+        <div class="series-icon">🏟️</div>
+        <h3 class="series-title">어웨이 & 홈 직관 르포</h3>
+        <p class="series-text">안필드 KOP석, 올드 트래퍼드 스트렛포드 엔드 현지 직관 및 영국 현지 펍 팬들의 날 것 그대로의 반응 브이로그.</p>
+        <span class="series-badge">월 1~2회 특별기획</span>
+      </div>
+      <div class="series-card">
+        <div class="series-icon">📡</div>
+        <h3 class="series-title">이적시장 스카우트 레이더</h3>
+        <p class="series-text">찌라시는 거르고 오피셜 급 공신력만 전달. 노스웨스트 연고 구단들의 타깃 영입 효과와 재정 분석.</p>
+        <span class="series-badge">이적시장 시즌 특별편</span>
+      </div>
+    </div>
+
+    <!-- Featured Videos -->
+    <div class="section-title-wrap" style="margin-top: 60px; margin-bottom: 36px;">
+      <div class="section-sub">LATEST UPLOADS</div>
+      <h3 style="font-size: 1.8rem; font-weight: 800;">최근 화제의 영상</h3>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card" onclick="window.open('https://youtube.com/channel/UCq9_Daq3YznD-JQUfETIa0w?si=Iff0gPz6uiPUm-cU', '_blank')">
+        <div class="video-thumb">
+          <div style="font-size: 3rem; opacity: 0.3;">⚽</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn-circle">▶</div>
+          </div>
+          <div class="video-duration">21:45</div>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">노스웨스트 더비 특집</div>
+          <div class="video-title">“우리가 무너진 이유” 맨유 팬과 리버풀 팬이 경기 끝나고 맥주 한잔 마시며 나눈 솔직 토크</div>
+          <div class="video-info">
+            <span>조회수 54만회</span> • <span>2일 전</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://youtube.com/channel/UCq9_Daq3YznD-JQUfETIa0w?si=Iff0gPz6uiPUm-cU', '_blank')">
+        <div class="video-thumb">
+          <div style="font-size: 3rem; opacity: 0.3;">📊</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn-circle">▶</div>
+          </div>
+          <div class="video-duration">15:10</div>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">전술 심층분석</div>
+          <div class="video-title">펩 vs 슬롯, 3미들 빌드업 전환 패턴 완벽 분석! 현대 축구의 최정점 전술 대결</div>
+          <div class="video-info">
+            <span>조회수 38만회</span> • <span>5일 전</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card" onclick="window.open('https://youtube.com/channel/UCq9_Daq3YznD-JQUfETIa0w?si=Iff0gPz6uiPUm-cU', '_blank')">
+        <div class="video-thumb">
+          <div style="font-size: 3rem; opacity: 0.3;">🇬🇧</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn-circle">▶</div>
+          </div>
+          <div class="video-duration">18:32</div>
+        </div>
+        <div class="video-meta">
+          <div class="video-tag">현지 직관기</div>
+          <div class="video-title">‘머지사이드 더비’ 킥오프 3시간 전 구디슨 파크 현장 열기! 에버튼 팬들의 심정은?</div>
+          <div class="video-info">
+            <span>조회수 29만회</span> • <span>1주일 전</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section class="container" id="community" style="padding-bottom: 60px;">
+    <div class="community-section">
+      <div class="comm-header-bar">
+        <div class="comm-title-area">
+          <h3>
+            <span>📢</span> 노스웨스트 팬 스탠드 (익명 커뮤니티)
+          </h3>
+          <p>말하지 않아도 안다! 구단 엠블럼을 달고 솔직하게 털어놓는 축구 팬들의 익명 라운지</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <div class="user-allegiance-badge">
+            <span style="color: var(--text-muted); font-size: 0.8rem;">현재 내 구단:</span>
+            <span id="currentMyClubBadge" style="font-weight: 700;">🔵 에버튼 FC</span>
+            <span class="change-club-link" onclick="openClubModal()">변경</span>
+          </div>
+          <button class="btn btn-primary" onclick="openWriteModal()" style="padding: 10px 20px; font-size: 0.9rem;">
+            <span>✏️</span> 익명 글쓰기
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls: Filters & Sort -->
+      <div class="comm-controls">
+        <div class="club-filters">
+          <button class="filter-btn active" onclick="setClubFilter('ALL', this)">전체보기</button>
+          <button class="filter-btn" onclick="setClubFilter('LIV', this)">🔴 리버풀</button>
+          <button class="filter-btn" onclick="setClubFilter('MUN', this)">🔴 맨유</button>
+          <button class="filter-btn" onclick="setClubFilter('MCI', this)">🔵 맨시티</button>
+          <button class="filter-btn" onclick="setClubFilter('EVE', this)">🔵 에버튼</button>
+          <button class="filter-btn" onclick="setClubFilter('ARS', this)">🔴 아스날</button>
+          <button class="filter-btn" onclick="setClubFilter('CHE', this)">🔵 첼시</button>
+          <button class="filter-btn" onclick="setClubFilter('TOT', this)">⚪ 토트넘</button>
+          <button class="filter-btn" onclick="setClubFilter('NEU', this)">⚽ 중립/기타</button>
+        </div>
+
+        <div class="comm-sort-box">
+          <select class="sort-select" id="sortSelect" onchange="renderPosts()">
+            <option value="latest">최신순</option>
+            <option value="popular">추천순</option>
+            <option value="comments">댓글 많은순</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Posts List -->
+      <div class="post-list" id="postList">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsorship & Ad Section -->
+  <section class="container" id="sponsor" style="padding-bottom: 80px;">
+    <div class="sponsor-section">
+      <div class="sponsor-layout">
+        <div class="sponsor-info">
+          <div class="section-sub">PARTNERSHIP & SPONSORSHIP</div>
+          <h3>비즈니스 협업 및<br>광고 제안</h3>
+          <p>
+            ‘노스웨스트 사람들’은 축구와 스포츠 라이프스타일에 열광하는 2040 남녀 핵심 시청자를 집중 보유하고 있습니다.
+            단순 PPL을 넘어 채널 시청자가 열광하는 스토리텔링형 브랜디드 콘텐츠를 제작합니다.
+          </p>
+
+          <ul class="sponsor-perks">
+            <li class="sponsor-perk-item">
+              <span class="perk-check">✔</span>
+              <div>
+                <strong>고몰입 브랜디드 콘텐츠 기획</strong><br>
+                <span style="color: var(--text-muted); font-size: 0.85rem;">자연스러운 축구 맥락 속에서 브랜드의 강점을 어필하는 맞춤형 코너 기획</span>
+              </div>
+            </li>
+            <li class="sponsor-perk-item">
+              <span class="perk-check">✔</span>
+              <div>
+                <strong>스포츠웨어 / 음료 / IT기기 / 게임 최적화</strong><br>
+                <span style="color: var(--text-muted); font-size: 0.85rem;">실제 시청자층의 소비 성향과 맞닿은 라이프스타일 카테고리 높은 전환율</span>
+              </div>
+            </li>
+            <li class="sponsor-perk-item">
+              <span class="perk-check">✔</span>
+              <div>
+                <strong>팬덤 커뮤니티 연계 프로모션</strong><br>
+                <span style="color: var(--text-muted); font-size: 0.85rem;">유튜브 영상뿐 아니라 웹 커뮤니티 및 라이브 방송 연계 이벤트 지원</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Form -->
+        <div class="sponsor-form">
+          <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 20px;">광고 / 제휴 문의 접수</h4>
+          <form id="inquiryForm" onsubmit="handleInquirySubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">기업명 / 브랜드명 *</label>
+                <input type="text" class="form-control" id="sponsorCompany" placeholder="예: (주)풋볼웨어" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">담당자명 / 직함 *</label>
+                <input type="text" class="form-control" id="sponsorName" placeholder="예: 홍길동 팀장" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">이메일 주소 *</label>
+                <input type="email" class="form-control" id="sponsorEmail" placeholder="contact@company.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">연락처 *</label>
+                <input type="tel" class="form-control" id="sponsorPhone" placeholder="010-0000-0000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">협업 희망 유형 *</label>
+              <select class="form-control" id="sponsorType">
+                <option value="branded">기획 브랜디드 영상 제작 (메인 스폰서)</option>
+                <option value="ppl">영상 내 단순 제품 노출 / PPL / 배너</option>
+                <option value="guest">선수/인플루언서 동반 출연 협업</option>
+                <option value="event">오프라인 팝업 / 단체관람 행사 제휴</option>
+                <option value="etc">기타 비즈니스 협업 제안</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">희망 진행 시기 & 예산 규모 (선택)</label>
+              <input type="text" class="form-control" id="sponsorBudget" placeholder="예: 다음 달 더비 매치 전 / 예산 협의">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">문의 및 제안 내용 상세 *</label>
+              <textarea class="form-control" id="sponsorMessage" placeholder="제안하고자 하시는 제품/서비스와 주요 요청사항을 자유롭게 작성해 주세요." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px;">
+              <span>🚀</span> 광고 및 협업 제안서 보내기
+            </button>
+            <div style="margin-top: 16px; padding: 12px 16px; background: rgba(0, 71, 187, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 10px; font-size: 0.82rem; color: #94a3b8; line-height: 1.5;">
+              📬 <strong>실시간 이메일 전송 연동</strong>: 폼 제출 시 채널 총괄 담당자 메일함(<code>nowesa.official@gmail.com</code>)으로 즉시 전달됩니다.<br>
+              회사소개서나 기획안 PDF 첨부가 필요하신 경우 <strong><a href="mailto:nowesa.official@gmail.com?subject=[NOWESA 협업/광고 제안]" style="color: #38bdf8; text-decoration: underline;">nowesa.official@gmail.com</a></strong>으로 직접 보내실 수도 있습니다.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-badge">NOWESA</span>
+          <span>노스웨스트 사람들</span>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:nowesa.official@gmail.com">nowesa.official@gmail.com</a>
+          <a href="https://youtube.com/channel/UCq9_Daq3YznD-JQUfETIa0w?si=Iff0gPz6uiPUm-cU" target="_blank" rel="noopener noreferrer" style="color: #ff3344; font-weight: 700;">📺 YouTube 채널</a>
+          <a href="https://instagram.com/nowesa.official" target="_blank" rel="noopener noreferrer" style="color: #e1306c; font-weight: 700;">📸 Instagram (@nowesa.official)</a>
+          <a href="#">Discord</a>
+        </div>
+      </div>
+      <p style="font-size: 0.8rem; line-height: 1.5;">
+        © 2026 노스웨스트 사람들 (Northwest Football Media). All Rights Reserved.<br>
+        본 페이지는 축구 유튜브 채널 ‘노스웨스트 사람들’의 공식 랜딩페이지 및 팬 커뮤니티입니다.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal: Select Favorite Club -->
+  <div class="modal-overlay" id="clubModal" onclick="closeClubModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">⚽ 내 응원 구단 선택</div>
+        <button class="modal-close-btn" onclick="closeClubModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+          선택하신 구단 엠블럼이 팬 라운지에서 글/댓글을 작성할 때 <strong>자동으로 부착</strong>됩니다. 굳이 밝히지 않아도 진짜 축구팬끼리는 엠블럼 하나로 통합니다!
+        </p>
+        <div class="club-select-grid" id="clubSelectGrid">
+          <!-- Dynamically generated club choices -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Write Anonymous Post -->
+  <div class="modal-overlay" id="writeModal" onclick="closeWriteModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">✏️ 익명 게시글 작성</div>
+        <button class="modal-close-btn" onclick="closeWriteModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handlePostSubmit(event)">
+          <div class="form-row" style="margin-bottom: 16px;">
+            <div>
+              <label class="form-label">부착할 엠블럼</label>
+              <select class="form-control" id="postClubSelect">
+                <!-- clubs populated via js -->
+              </select>
+            </div>
+            <div>
+              <label class="form-label">카테고리</label>
+              <select class="form-control" id="postCategorySelect">
+                <option value="매치토크">⚽ 매치토크</option>
+                <option value="자유잡담">💬 자유잡담</option>
+                <option value="전술토론">📊 전술토론</option>
+                <option value="이적소식">📰 이적소식</option>
+                <option value="라이벌전">🔥 라이벌전 설전</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label class="form-label" style="margin: 0;">익명 닉네임</label>
+              <button type="button" onclick="generateRandomNick()" style="background: none; border: none; color: var(--accent-green); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
+                🎲 닉네임 랜덤 생성
+              </button>
+            </div>
+            <input type="text" class="form-control" id="postAuthorInput" placeholder="예: 안필드의 심장, 올드트래퍼드 직관러" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">제목 *</label>
+            <input type="text" class="form-control" id="postTitleInput" placeholder="팬들의 시선을 사로잡을 한 줄 제목" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">본문 내용 *</label>
+            <textarea class="form-control" id="postContentInput" placeholder="익명으로 자유롭게 당신의 축구 생각을 적어보세요. (상호 존중과 위트 있는 비판을 권장합니다)" style="min-height: 140px;" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 13px;">
+            <span>📢</span> 익명 게시글 등록하기
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Post Detail & Comments -->
+  <div class="modal-overlay" id="detailModal" onclick="closeDetailModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div id="detailClubTag"></div>
+        <button class="modal-close-btn" onclick="closeDetailModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3 id="detailPostTitle" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;"></h3>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+          <span id="detailPostAuthor"></span>
+          <span>•</span>
+          <span id="detailPostTime"></span>
+          <span>•</span>
+          <span id="detailPostCategory" class="tag-category"></span>
+        </div>
+
+        <div class="detail-post-body" id="detailPostContent"></div>
+
+        <div class="vote-actions" style="margin-bottom: 24px;">
+          <button class="vote-btn" id="detailLikeBtn" onclick="voteDetail(event, 'like')">
+            <span>👍</span> <span id="detailLikeCount">0</span>
+          </button>
+          <button class="vote-btn" id="detailDislikeBtn" onclick="voteDetail(event, 'dislike')">
+            <span>👎</span> <span id="detailDislikeCount">0</span>
+          </button>
+        </div>
+
+        <!-- Comments -->
+        <div class="comments-section-title">
+          <span>💬 댓글</span> (<span id="detailCommentsCount">0</span>)
+        </div>
+
+        <div class="comment-list" id="detailCommentsList">
+          <!-- Comments rendered here -->
+        </div>
+
+        <!-- Add Comment Form -->
+        <form onsubmit="handleCommentSubmit(event)" class="add-comment-box">
+          <input type="text" class="form-control" id="commentTextInput" placeholder="내 엠블럼을 달고 한마디 남기기..." required style="flex: 1;">
+          <button type="submit" class="btn btn-primary" style="padding: 0 20px;">등록</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toastBox">
+    <span id="toastIcon">✨</span>
+    <span id="toastMsg">알림 메시지</span>
+  </div>
+
+    <script>
+    // 📬 광고 및 협업 제안을 실제로 받아볼 이메일 주소 (원하시는 다른 이메일로 변경 가능)
+    const RECEIVER_EMAIL = "nowesa.official@gmail.com";
+
+    // Club database definitions
+    const CLUBS = {
+      LIV: { id: 'LIV', name: '리버풀 FC', icon: '🔴', color: '#c8102e', badgeBg: 'rgba(200, 16, 46, 0.2)', badgeBorder: '#c8102e', sub: 'The Reds (YNWA)' },
+      MUN: { id: 'MUN', name: '맨체스터 유나이티드', icon: '🔴', color: '#da291c', badgeBg: 'rgba(218, 41, 28, 0.2)', badgeBorder: '#da291c', sub: 'Red Devils' },
+      MCI: { id: 'MCI', name: '맨체스터 시티', icon: '🔵', color: '#6cabdd', badgeBg: 'rgba(108, 171, 221, 0.2)', badgeBorder: '#6cabdd', sub: 'The Citizens' },
+      EVE: { id: 'EVE', name: '에버튼 FC', icon: '🔵', color: '#003399', badgeBg: 'rgba(0, 51, 153, 0.2)', badgeBorder: '#003399', sub: 'The Toffees' },
+      ARS: { id: 'ARS', name: '아스날 FC', icon: '🔴', color: '#ef0107', badgeBg: 'rgba(239, 1, 7, 0.2)', badgeBorder: '#ef0107', sub: 'The Gunners' },
+      CHE: { id: 'CHE', name: '첼시 FC', icon: '🔵', color: '#034694', badgeBg: 'rgba(3, 70, 148, 0.2)', badgeBorder: '#034694', sub: 'The Blues' },
+      TOT: { id: 'TOT', name: '토트넘 홋스퍼', icon: '⚪', color: '#132257', badgeBg: 'rgba(19, 34, 87, 0.4)', badgeBorder: '#475569', sub: 'Spurs' },
+      NEU: { id: 'NEU', name: '축구 중립팬 / 기타', icon: '⚽', color: '#00ff87', badgeBg: 'rgba(0, 255, 135, 0.15)', badgeBorder: '#00ff87', sub: 'Football Lover' }
+    };
+
+    const RANDOM_NICKNAMES = [
+      "안필드의 심장", "캐릭의 대각선 롱패스", "올드 트래퍼드 잔디관리자", "맨체스터는 파란색", 
+      "이스탄불의 기적", "퍼기 타임 소환술사", "구디슨 파크 마지막 관중", "하프스페이스 지배자",
+      "게겐프레싱 전도사", "VAR 판독실 알바", "런던보다 북서부", "90분 뛰고 온 축덕"
+    ];
+
+    // Initial default posts for standalone client mode
+    const DEFAULT_POSTS = [
+      {
+        id: 1,
+        clubId: 'LIV',
+        category: '매치토크',
+        author: '안필드의 붉은심장',
+        time: '12분 전',
+        title: '솔직히 이번 노스웨스트 더비 승부처는 3선 압박 전환속도였다',
+        content: '어제 노스웨스트 사람들 유튜브 분석 영상 보고 왔는데 소름 돋았음. 경기 중에 상대 빌드업을 터치라인으로 가둬놓고 2차 압박 들어가는 디테일을 콕 짚어주더라. 솔직히 후반 70분 이후 체력 이슈만 없었으면 2골은 더 들어갔을 텐데 우리 미드진 보강 진짜 시급하긴 함.',
+        likes: 42,
+        dislikes: 3,
+        userVote: null,
+        comments: [
+          { clubId: 'MUN', author: '퍼기경의 껌', time: '8분 전', text: '인정할 건 인정하는데 전반전 PK 논란 짚고 넘어갔어야 함 ㅋㅋㅋ' },
+          { clubId: 'LIV', author: '슬롯볼마스터', time: '5분 전', text: '그래도 압박 퀄리티는 지난 시즌보다 훨씬 정교해졌음 인정?' },
+          { clubId: 'MCI', author: '홀란드의 머리띠', time: '1분 전', text: '두 팀 다 사이좋게 승점 1점씩 나눠 가졌으면 더 좋았을 텐데 아쉽네' }
+        ]
+      },
+      {
+        id: 2,
+        clubId: 'MUN',
+        category: '전술토론',
+        author: '캐릭의 후계자',
+        time: '34분 전',
+        title: '우리 팀 풀백 오버래핑 동선 좀 다시 짜야 하지 않냐?',
+        content: '인버티드 풀백 쓰는 건 좋은데 중앙에서 턴오버 나왔을 때 뒷공간 광활하게 비는 거 매 경기 반복됨. 어제 영상에서도 패널들이 짚어주던데, 윙어가 수비 커버 들어오기 전에 미드필더 한 명이 백3로 내려앉는 라볼피아나 동선이 전혀 유기적이지가 않음. 여러분 생각은 어떰?',
+        likes: 28,
+        dislikes: 1,
+        userVote: null,
+        comments: [
+          { clubId: 'MUN', author: '꿈의극장 청소부', time: '20분 전', text: '진짜 공감함. 수비형 미드필더가 혼자 커버 치다 과부하 걸림.' },
+          { clubId: 'ARS', author: '아르테타의 칠판', time: '14분 전', text: '타팀 팬 입장에서 봐도 밸런스가 좀 깨져 보이긴 하더라.' }
+        ]
+      },
+      {
+        id: 3,
+        clubId: 'MCI',
+        category: '자유잡담',
+        author: '에티하드 드론',
+        time: '1시간 전',
+        title: '맨체스터의 주인 논쟁은 언제까지 갈까 ㅋㅋㅋ',
+        content: '유튜브 채널 이름이 노스웨스트 사람들이라서 맨유-리버풀만 나올 줄 알았는데, 맨시티 분석이랑 맨더비 후기 콘텐츠도 진짜 고퀄이더라. 트레블 이후로 현지에서도 맨체스터 분위기 많이 바뀌었다는데 직관 르포 보니까 현장감 장난 아님.',
+        likes: 35,
+        dislikes: 18,
+        userVote: null,
+        comments: [
+          { clubId: 'MUN', author: '7번의 무게', time: '40분 전', text: '역사가 밥 먹여주진 않지만 역사가 전부다 친구야...' },
+          { clubId: 'NEU', author: '방구석 펠레', time: '25분 전', text: '여기 댓글창도 노스웨스트 사람들 방송만큼 매콤하네 ㅋㅋㅋ' }
+        ]
+      },
+      {
+        id: 4,
+        clubId: 'EVE',
+        category: '라이벌전',
+        author: '구디슨파크의 눈물',
+        time: '2시간 전',
+        title: '에버튼 팬들도 여기 숨어서 다 보고 있다...',
+        content: '머지사이드 더비 프리뷰 방송할 때 우리 팀 전력 분석 너무 팩폭이라 뼈 맞아서 순살 됨 ㅠㅠ 그래도 우리 신축 구장 브램리 무어 독 브이로그 한번 찍어주라! 노스웨스트 채널 제작진 형들 부탁해!',
+        likes: 51,
+        dislikes: 2,
+        userVote: null,
+        comments: [
+          { clubId: 'LIV', author: '클롭의 안경', time: '1시간 전', text: '신구장 완공되면 머지사이드 더비 원정 가볼 생각에 설레긴 함 파이팅해라' },
+          { clubId: 'EVE', author: '토피즈 영구회원', time: '50분 전', text: '제작진 형들 신구장 콘텐츠 꼭 다뤄주세요 조회수 보장함!' }
+        ]
+      }
+    ];
+
+    // State management
+    let state = {
+      myClub: localStorage.getItem('nw_user_club') || 'EVE',
+      currentFilter: 'ALL',
+      posts: JSON.parse(localStorage.getItem('nw_posts')) || DEFAULT_POSTS,
+      selectedPostId: null,
+      sessionUuid: localStorage.getItem('nw_session_uuid') || (function() {
+        const u = 'anon_' + Math.random().toString(36).substring(2, 11);
+        localStorage.setItem('nw_session_uuid', u);
+        return u;
+      })(),
+      isApiMode: false
+    };
+
+    function savePosts() {
+      if (!state.isApiMode) {
+        localStorage.setItem('nw_posts', JSON.stringify(state.posts));
+      }
+    }
+
+    function saveMyClub(clubId) {
+      state.myClub = clubId;
+      localStorage.setItem('nw_user_club', clubId);
+      updateClubUI();
+    }
+
+    function updateClubUI() {
+      const club = CLUBS[state.myClub] || CLUBS.LIV;
+      document.getElementById('headerClubIcon').innerText = club.icon;
+      document.getElementById('headerClubName').innerText = club.name;
+      document.getElementById('currentMyClubBadge').innerHTML = `${club.icon} ${club.name}`;
+      
+      const postClubSelect = document.getElementById('postClubSelect');
+      if (postClubSelect) {
+        postClubSelect.value = state.myClub;
+      }
+    }
+
+    // Modal Handlers
+    function openClubModal() {
+      renderClubGrid();
+      document.getElementById('clubModal').classList.add('active');
+    }
+    function closeClubModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('clubModal').classList.remove('active');
+    }
+
+    function renderClubGrid() {
+      const grid = document.getElementById('clubSelectGrid');
+      grid.innerHTML = '';
+      Object.values(CLUBS).forEach(c => {
+        const isSel = c.id === state.myClub;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `club-option-btn ${isSel ? 'selected' : ''}`;
+        btn.onclick = () => {
+          saveMyClub(c.id);
+          closeClubModal();
+          showToast(`내 응원 구단이 '${c.name}'(으)로 설정되었습니다!`);
+        };
+        btn.innerHTML = `
+          <div class="club-icon-big">${c.icon}</div>
+          <div>
+            <div class="club-name-strong">${c.name}</div>
+            <div class="club-sub">${c.sub}</div>
+          </div>
+        `;
+        grid.appendChild(btn);
+      });
+    }
+
+    function openWriteModal() {
+      const select = document.getElementById('postClubSelect');
+      select.innerHTML = '';
+      Object.values(CLUBS).forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.innerText = `${c.icon} ${c.name}`;
+        if (c.id === state.myClub) opt.selected = true;
+        select.appendChild(opt);
+      });
+
+      if (!document.getElementById('postAuthorInput').value) {
+        generateRandomNick();
+      }
+      document.getElementById('writeModal').classList.add('active');
+    }
+    function closeWriteModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('writeModal').classList.remove('active');
+    }
+
+    function generateRandomNick() {
+      const rand = RANDOM_NICKNAMES[Math.floor(Math.random() * RANDOM_NICKNAMES.length)];
+      document.getElementById('postAuthorInput').value = rand;
+    }
+
+    async function handlePostSubmit(e) {
+      e.preventDefault();
+      const clubId = document.getElementById('postClubSelect').value;
+      const category = document.getElementById('postCategorySelect').value;
+      const author = document.getElementById('postAuthorInput').value.trim() || '익명의 축덕';
+      const title = document.getElementById('postTitleInput').value.trim();
+      const content = document.getElementById('postContentInput').value.trim();
+
+      if (!title || !content) {
+        showToast('제목과 내용을 모두 입력해 주세요.');
+        return;
+      }
+
+      if (state.isApiMode) {
+        try {
+          const res = await fetch('/api/v1/posts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              clubId,
+              category,
+              authorNickname: author,
+              title,
+              content,
+              sessionUuid: state.sessionUuid
+            })
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            showToast(data.detail || '등록 실패');
+            return;
+          }
+          closeWriteModal();
+          await fetchPostsFromApi();
+          showToast('익명 게시글이 서버에 등록되었습니다! ⚽');
+        } catch (err) {
+          console.error(err);
+          showToast('네트워크 오류가 발생했습니다.');
+        }
+      } else {
+        const newPost = {
+          id: Date.now(),
+          clubId,
+          category,
+          author,
+          time: '방금 전',
+          title,
+          content,
+          likes: 1,
+          dislikes: 0,
+          userVote: 'like',
+          comments: []
+        };
+        state.posts.unshift(newPost);
+        savePosts();
+        closeWriteModal();
+        renderPosts();
+        showToast('익명 게시글이 성공적으로 등록되었습니다! ⚽');
+      }
+
+      document.getElementById('postTitleInput').value = '';
+      document.getElementById('postContentInput').value = '';
+    }
+
+    function setClubFilter(clubId, btn) {
+      state.currentFilter = clubId;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (state.isApiMode) {
+        fetchPostsFromApi();
+      } else {
+        renderPosts();
+      }
+    }
+
+    async function fetchPostsFromApi() {
+      try {
+        const sortVal = document.getElementById('sortSelect').value;
+        const res = await fetch(`/api/v1/posts?club=${state.currentFilter}&sort=${sortVal}&sessionUuid=${state.sessionUuid}`);
+        if (res.ok) {
+          const data = await res.json();
+          state.posts = data.posts;
+          renderPosts();
+        }
+      } catch (err) {
+        console.error('API Fetch failed, using local:', err);
+      }
+    }
+
+    function renderPosts() {
+      const listEl = document.getElementById('postList');
+      const sortVal = document.getElementById('sortSelect').value;
+
+      let filtered = state.posts;
+      if (!state.isApiMode) {
+        filtered = state.posts.filter(p => {
+          if (state.currentFilter === 'ALL') return true;
+          return p.clubId === state.currentFilter;
+        });
+
+        if (sortVal === 'latest') {
+          filtered.sort((a, b) => b.id - a.id);
+        } else if (sortVal === 'popular') {
+          filtered.sort((a, b) => (b.likes - b.dislikes) - (a.likes - a.dislikes));
+        } else if (sortVal === 'comments') {
+          filtered.sort((a, b) => ((b.comments?.length || b.commentCount || 0) - (a.comments?.length || a.commentCount || 0)));
+        }
+      }
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `
+          <div style="text-align: center; padding: 60px 20px; color: var(--text-muted); background: var(--bg-card); border-radius: 16px; border: 1px dashed var(--border-color);">
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">⚽</div>
+            <p style="font-size: 1.1rem; font-weight: 700; color: #fff;">해당 구단 엠블럼을 단 게시물이 아직 없습니다.</p>
+            <p style="font-size: 0.9rem; margin-top: 6px;">첫 번째 익명 소신 발언의 주인공이 되어보세요!</p>
+            <button class="btn btn-primary" onclick="openWriteModal()" style="margin-top: 16px;">새 글 작성하기</button>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = '';
+      filtered.forEach(post => {
+        const club = CLUBS[post.clubId] || CLUBS.NEU;
+        const postCard = document.createElement('div');
+        postCard.className = 'post-card';
+        postCard.onclick = (e) => {
+          if (e.target.closest('.vote-btn')) return;
+          openDetailModal(post.id);
+        };
+
+        const isLiked = post.userVote === 'like';
+        const isDisliked = post.userVote === 'dislike';
+        const commentCount = post.comments ? post.comments.length : (post.commentCount || 0);
+
+        postCard.innerHTML = `
+          <div class="post-top">
+            <div class="post-author-box">
+              <span class="club-tag" style="background: ${club.badgeBg}; border: 1px solid ${club.badgeBorder}; color: #fff;">
+                <span>${club.icon}</span> <span>${club.name}</span>
+              </span>
+              <span class="tag-category">${post.category}</span>
+              <span class="post-author-name">by ${escapeHtml(post.author)}</span>
+            </div>
+            <span class="post-time">${post.time}</span>
+          </div>
+
+          <h4 class="post-title">${escapeHtml(post.title)}</h4>
+          <p class="post-snippet">${escapeHtml(post.content)}</p>
+
+          <div class="post-bottom">
+            <div class="vote-actions">
+              <button class="vote-btn ${isLiked ? 'active-like' : ''}" onclick="votePost(event, ${post.id}, 'like')">
+                <span>👍</span> <span>${post.likes}</span>
+              </button>
+              <button class="vote-btn ${isDisliked ? 'active-dislike' : ''}" onclick="votePost(event, ${post.id}, 'dislike')">
+                <span>👎</span> <span>${post.dislikes}</span>
+              </button>
+            </div>
+            <div class="comments-count-btn">
+              <span>💬</span> <span>댓글 ${commentCount}개</span>
+            </div>
+          </div>
+        `;
+        listEl.appendChild(postCard);
+      });
+    }
+
+    async function votePost(e, postId, type) {
+      e.stopPropagation();
+      const post = state.posts.find(p => p.id === postId);
+
+      if (state.isApiMode) {
+        try {
+          const res = await fetch(`/api/v1/posts/${postId}/vote`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ voteType: type, sessionUuid: state.sessionUuid })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            if (post) {
+              post.likes = data.likes;
+              post.dislikes = data.dislikes;
+              post.userVote = data.userVote;
+            }
+            renderPosts();
+            if (state.selectedPostId === postId) {
+              updateDetailVotes();
+            }
+            showToast(data.userVote ? (data.userVote === 'like' ? '게시글을 추천했습니다! 👍' : '비추천을 남겼습니다. 👎') : '투표가 취소되었습니다.');
+          }
+        } catch (err) {
+          console.error(err);
+        }
+        return;
+      }
+
+      // Offline / LocalStorage Mode
+      if (!post) return;
+      if (post.userVote === type) {
+        if (type === 'like') post.likes = Math.max(0, post.likes - 1);
+        if (type === 'dislike') post.dislikes = Math.max(0, post.dislikes - 1);
+        post.userVote = null;
+        showToast('투표가 취소되었습니다.');
+      } else {
+        if (post.userVote === 'like') post.likes = Math.max(0, post.likes - 1);
+        if (post.userVote === 'dislike') post.dislikes = Math.max(0, post.dislikes - 1);
+
+        if (type === 'like') {
+          post.likes += 1;
+          showToast('게시글을 추천(좋아요)했습니다! 👍');
+        } else {
+          post.dislikes += 1;
+          showToast('게시글에 비추천(싫어요)을 남겼습니다. 👎');
+        }
+        post.userVote = type;
+      }
+
+      savePosts();
+      renderPosts();
+      if (state.selectedPostId === postId) {
+        updateDetailVotes();
+      }
+    }
+
+    async function openDetailModal(postId) {
+      state.selectedPostId = postId;
+      let post = state.posts.find(p => p.id === postId);
+
+      if (state.isApiMode) {
+        try {
+          const res = await fetch(`/api/v1/posts/${postId}?sessionUuid=${state.sessionUuid}`);
+          if (res.ok) {
+            const data = await res.json();
+            post = data.post;
+            post.comments = data.comments;
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      if (!post) return;
+
+      const club = CLUBS[post.clubId] || CLUBS.NEU;
+      document.getElementById('detailClubTag').innerHTML = `
+        <span class="club-tag" style="background: ${club.badgeBg}; border: 1px solid ${club.badgeBorder}; color: #fff;">
+          <span>${club.icon}</span> <span>${club.name}</span>
+        </span>
+      `;
+      document.getElementById('detailPostTitle').innerText = post.title;
+      document.getElementById('detailPostAuthor').innerText = `by ${post.author}`;
+      document.getElementById('detailPostTime').innerText = post.time;
+      document.getElementById('detailPostCategory').innerText = post.category;
+      document.getElementById('detailPostContent').innerText = post.content;
+
+      updateDetailVotes();
+      renderDetailComments(post.comments || []);
+      document.getElementById('detailModal').classList.add('active');
+    }
+
+    function closeDetailModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('detailModal').classList.remove('active');
+      state.selectedPostId = null;
+    }
+
+    function updateDetailVotes() {
+      const post = state.posts.find(p => p.id === state.selectedPostId);
+      if (!post) return;
+
+      document.getElementById('detailLikeCount').innerText = post.likes;
+      document.getElementById('detailDislikeCount').innerText = post.dislikes;
+
+      const likeBtn = document.getElementById('detailLikeBtn');
+      const dislikeBtn = document.getElementById('detailDislikeBtn');
+
+      likeBtn.className = `vote-btn ${post.userVote === 'like' ? 'active-like' : ''}`;
+      dislikeBtn.className = `vote-btn ${post.userVote === 'dislike' ? 'active-dislike' : ''}`;
+    }
+
+    function voteDetail(e, type) {
+      if (!state.selectedPostId) return;
+      votePost(e, state.selectedPostId, type);
+    }
+
+    function renderDetailComments(commentsList) {
+      const post = state.posts.find(p => p.id === state.selectedPostId);
+      const comments = commentsList || (post ? post.comments : []) || [];
+
+      const countEl = document.getElementById('detailCommentsCount');
+      const listEl = document.getElementById('detailCommentsList');
+
+      countEl.innerText = comments.length;
+      listEl.innerHTML = '';
+
+      if (comments.length === 0) {
+        listEl.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 20px; font-size: 0.9rem;">아직 등록된 댓글이 없습니다. 첫 마디를 건네보세요!</div>`;
+        return;
+      }
+
+      comments.forEach(c => {
+        const club = CLUBS[c.clubId] || CLUBS.NEU;
+        const item = document.createElement('div');
+        item.className = 'comment-item';
+        item.innerHTML = `
+          <div class="comment-top">
+            <span class="club-tag" style="background: ${club.badgeBg}; border: 1px solid ${club.badgeBorder}; font-size: 0.75rem; padding: 2px 8px;">
+              ${club.icon} ${club.name}
+            </span>
+            <span style="font-weight: 700; color: #fff;">${escapeHtml(c.author)}</span>
+            <span style="color: #64748b;">${c.time}</span>
+          </div>
+          <div class="comment-text">${escapeHtml(c.content || c.text)}</div>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    async function handleCommentSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('commentTextInput');
+      const text = input.value.trim();
+      if (!text || !state.selectedPostId) return;
+
+      if (state.isApiMode) {
+        try {
+          const res = await fetch(`/api/v1/posts/${state.selectedPostId}/comments`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              clubId: state.myClub,
+              authorNickname: '익명의 ' + (CLUBS[state.myClub]?.name || '팬'),
+              content: text
+            })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            input.value = '';
+            showToast('댓글이 등록되었습니다! 💬');
+            openDetailModal(state.selectedPostId);
+            fetchPostsFromApi();
+          } else {
+            showToast(data.detail || '댓글 등록 실패');
+          }
+        } catch (err) {
+          console.error(err);
+        }
+        return;
+      }
+
+      // Offline / LocalStorage Mode
+      const post = state.posts.find(p => p.id === state.selectedPostId);
+      if (!post) return;
+      if (!post.comments) post.comments = [];
+
+      post.comments.push({
+        clubId: state.myClub,
+        author: '익명의 ' + (CLUBS[state.myClub]?.name || '팬'),
+        time: '방금 전',
+        text: text
+      });
+
+      savePosts();
+      renderDetailComments(post.comments);
+      renderPosts();
+      input.value = '';
+      showToast('댓글이 등록되었습니다! 💬');
+    }
+
+    async function handleInquirySubmit(e) {
+      e.preventDefault();
+      const company = document.getElementById('sponsorCompany').value;
+      const name = document.getElementById('sponsorName').value;
+      const email = document.getElementById('sponsorEmail').value;
+      const phone = document.getElementById('sponsorPhone').value;
+      const type = document.getElementById('sponsorType').value;
+      const budget = document.getElementById('sponsorBudget').value;
+      const message = document.getElementById('sponsorMessage').value;
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>⏳</span> 전송 중...';
+      submitBtn.disabled = true;
+
+      // 1. 백엔드 API 연동 모드일 때
+      if (state.isApiMode) {
+        try {
+          const res = await fetch('/api/v1/inquiries', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              companyName: company,
+              contactPerson: name,
+              email: email,
+              phone: phone,
+              inquiryType: type,
+              budgetRange: budget,
+              message: message
+            })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            showToast(data.message || '광고/협업 제안이 접수되었습니다! 🚀');
+            document.getElementById('inquiryForm').reset();
+          } else {
+            showToast('문의 접수 중 오류가 발생했습니다.');
+          }
+        } catch (err) {
+          console.error(err);
+          showToast('서버 연결 실패');
+        } finally {
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.disabled = false;
+        }
+        return;
+      }
+
+      // 2. 버셀/정적 웹사이트 배포 모드: 실제 이메일함(FormSubmit)으로 실시간 발송
+      try {
+        const payload = {
+          "제안기업": company,
+          "담당자": name,
+          "회신이메일": email,
+          "연락처": phone,
+          "협업유형": type,
+          "희망예산_시기": budget || "미기재",
+          "제안내용": message,
+          "_subject": `[NOWESA 협업/광고 제안] ${company} (${name} 님)`,
+          "_template": "table"
+        };
+
+        const res = await fetch(`https://formsubmit.co/ajax/${RECEIVER_EMAIL}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          showToast(`[전송 완료] ${company} ${name} 님의 제안서가 담당자 메일함으로 발송되었습니다! 📬`);
+          document.getElementById('inquiryForm').reset();
+        } else {
+          showToast(data.message || '제안서가 접수되었습니다.');
+          document.getElementById('inquiryForm').reset();
+        }
+      } catch (err) {
+        console.error("FormSubmit error:", err);
+        const mailtoBody = "담당자: " + name + "\n연락처: " + phone + "\n\n내용:\n" + message;
+        const mailtoUrl = `mailto:${RECEIVER_EMAIL}?subject=${encodeURIComponent('[NOWESA 광고제안] ' + company)}&body=${encodeURIComponent(mailtoBody)}`;
+        window.location.href = mailtoUrl;
+        showToast("이메일 프로그램으로 연결되었습니다.");
+      } finally {
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    }
+
+    function showToast(msg, icon = '⚽') {
+      const box = document.getElementById('toastBox');
+      document.getElementById('toastIcon').innerText = icon;
+      document.getElementById('toastMsg').innerText = msg;
+      box.classList.add('show');
+      setTimeout(() => {
+        box.classList.remove('show');
+      }, 3500);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, function(m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[m];
+      });
+    }
+
+    // Check API availability on startup
+    async function initApp() {
+      updateClubUI();
+      try {
+        const res = await fetch('/api/v1/health');
+        if (res.ok) {
+          state.isApiMode = true;
+          console.log('[노스웨스트 사람들] FastAPI 백엔드 서버 연동 성공');
+          await fetchPostsFromApi();
+          return;
+        }
+      } catch (e) {
+        console.log('[노스웨스트 사람들] 로컬 독립 실행 모드 (localStorage)');
+      }
+      renderPosts();
+    }
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+
+</body>
+</html>
